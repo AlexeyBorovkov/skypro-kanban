@@ -1,10 +1,9 @@
-
-import { Calendar } from "../../Calendar/Calendar"
+import { Calendar } from "../../Calendar/Calendar.jsx"
 
 export const PopBrowse = () => {
     return (
         <div className="pop-browse" id="popBrowse">
-            <div className="pop-browse__container">
+                <div className="pop-browse__container">
                 <div className="pop-browse__block">
                     <div className="pop-browse__content">
                         <div className="pop-browse__top-block">
