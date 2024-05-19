@@ -70,7 +70,17 @@ export const Container = styled.div`
   padding: 0 30px;
 `
 
+// export const Hover01 = (element) => styled[element]`
+// &:hover {
+//   background-color: #33399b;
+// }
+// `
 
+// export const Hover02 = (element) => styled[element]`
+// &:hover {
+//   color: #33399b;
+// }
+// `
 
 export const Hover01 = css`
 &:hover {
