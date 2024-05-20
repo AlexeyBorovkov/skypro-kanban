@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colorTheme } from "../../global.styled";
 
 export const Cards = styled.div`
   width: 100%;
@@ -11,7 +12,6 @@ export const Cards = styled.div`
     overflow-y: auto;
   }
 `
-
 export const CardsItem = styled.div`
   padding: 5px;
   animation-name: card-animation;
@@ -51,15 +51,6 @@ export const CardGroup = styled.div`
   align-items: center;
   justify-content: space-between;
 `
-
-export const CardContent = styled.div`
-  height: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-`
-
 export const CardDate = styled.div`
   display: flex;
   align-items: center;
@@ -78,24 +69,51 @@ export const CardDate = styled.div`
  }
 `
 
-const color = {
-  orange: 'background-color: #FFE4C2; color: #FF6D00;',
-  green: 'background-color: #B4FDD1; color: #06B16E;',
-  purple: 'background-color: #E9D4FF; color: #9A48F1;',
-}
+// const color = {
+//   orange: 'background-color: #FFE4C2; color: #FF6D00;',
+//   green: 'background-color: #B4FDD1; color: #06B16E;',
+//   purple: 'background-color: #E9D4FF; color: #9A48F1;',
+// }
 
 export const CardTheme = styled.div`
-  width: auto;
-  height: 20px;
-  padding: 5px 14px;
-  border-radius: 18px;
-  ${(props) => color[props.$color]};
+    width: auto;
+    height: 20px;
+    padding: 5px 14px;
+    border-radius: 18px;
+    ${(props) => colorTheme(props.$color)};
 
-  p {
-  font-size: 10px;
-  font-weight: 600;
-  line-height: 10px;
-}
+    p {
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 10px;
+    }
+`
+export const CardContent = styled.div`
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+`
+
+export const CardContainer = styled.div`
+    width: 220px;
+    height: 130px;
+    background-color: ${({theme}) => theme.primary};
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: stretch;
+    padding: 15px 13px 19px;
+
+`
+export const CardTitle = styled.h3`
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 18px;
+    color: ${({theme}) => theme.text};
+    margin-bottom: 10px;
 `
 export const CardBtn = styled.div`
   width: 24px;
@@ -111,12 +129,4 @@ export const CardBtn = styled.div`
   border-radius: 50%;
   background-color: #94A6BE;
 }
-`
-
-export const CardTitle = styled.h3`
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 18px;
-  color: ${({theme}) => theme.text};
-  margin-bottom: 10px;
 `
