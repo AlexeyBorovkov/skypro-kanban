@@ -7,7 +7,7 @@ export const Card = ({topic, date, title}) => {
             <S.CardContainer>
                 <S.CardGroup>
                 <S.CardTheme className={`card__theme ${colours[topic]}`}>
-                    <p>{topic}</p>
+                        <p>{topic}</p>
                     </S.CardTheme>
                     <a href="#popBrowse" target="_self">
                         <S.CardBtn>
