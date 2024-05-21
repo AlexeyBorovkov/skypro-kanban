@@ -1,11 +1,7 @@
 import { CardsCard, CardGroup, CardsItem, CardContent, CardDate, CardTheme, CardBtn, CardTitle } from "./card.styled.js"
-
+import { colors } from "./card.styled.js"
 export const Card = ({topic, date, title}) => {
-    const colors = {
-        'Web Design': 'orange',
-        'Research': 'green',
-        'Copywriting': 'purple', 
-    }
+  
     return (
         <CardsItem>
             <CardsCard className="card">

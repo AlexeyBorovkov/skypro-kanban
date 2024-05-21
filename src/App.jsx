@@ -4,11 +4,11 @@ import { Header } from './componets/Header/Header.jsx'
 import { Main } from './componets/Main/Main.jsx'
 import { PopBrowse } from './componets/Popups/PopBrowse/PopBrowse.jsx'
 import { PopNewCard } from './componets/Popups/PopNewCard/PopNewCard.jsx'
-import { PopUser } from './componets/Popups/Popuser/PopUser.jsx'
+import { PopUser } from './componets/Popups/PopExit/PopExit.jsx'
 import { tasks } from './data.js'
 import { GlobalStyle, Wrapper } from './global.styled.js'
 import { ThemeProvider } from 'styled-components'
-import { darkTheme, lightTheme } from './themeStyle.styled.js'
+import { darkTheme, lightTheme } from './themeStyle.js'
 
 
 function App() {

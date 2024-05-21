@@ -78,10 +78,20 @@ export const CardDate = styled.div`
  }
 `
 
+
 const color = {
-  orange: 'background-color: #FFE4C2; color: #FF6D00;',
-  green: 'background-color: #B4FDD1; color: #06B16E;',
-  purple: 'background-color: #E9D4FF; color: #9A48F1;',
+  orange: {
+    color: '#FF6D00',
+    backgroundColor: '#FFE4C2'
+  },
+  green: {
+    color: '#06B16E',
+    backgroundColor: '#B4FDD1'
+  },
+  purple: {
+    color: '9A48F1',
+    backgroundColor: '#E9D4FF'
+  }
 }
 
 export const CardTheme = styled.div`
@@ -120,3 +130,8 @@ export const CardTitle = styled.h3`
   color: ${({theme}) => theme.text};
   margin-bottom: 10px;
 `
+export const colors = {
+  'Web Design': 'orange',
+  'Research': 'green',
+  'Copywriting': 'purple', 
+}
