@@ -1,27 +1,27 @@
-import * as S from './card.styled'
-import { colours } from '../../global.styled'
+import { CardsCard, CardGroup, CardsItem, CardContent, CardDate, CardTheme, CardBtn, CardTitle } from "./card.styled.js"
+import { colors } from "./card.styled.js"
 export const Card = ({topic, date, title}) => {
   
     return (
-        <S.CardsItem>
-            <S.CardContainer>
-                <S.CardGroup>
-                <S.CardTheme className={`card__theme ${colours[topic]}`}>
+        <CardsItem>
+            <CardsCard className="card">
+                <CardGroup>
+                    <CardTheme $color={colors[topic]}>
                         <p>{topic}</p>
-                    </S.CardTheme>
+                    </CardTheme>
                     <a href="#popBrowse" target="_self">
-                        <S.CardBtn>
+                        <CardBtn>
                             <div></div>
                             <div></div>
                             <div></div>
-                        </S.CardBtn>
+                        </CardBtn>
                     </a>
-                </S.CardGroup>
-                <S.CardContent>
+                </CardGroup>
+                <CardContent>
                     <a href="" target="_blank">
-                        <S.CardTitle>{title}</S.CardTitle>
+                        <CardTitle>{title}</CardTitle>
                     </a>
-                    <S.CardDate>
+                    <CardDate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
                             <g clipPath="url(#clip0_1_415)">
                                 <path d="M10.5625 2.03125H2.4375C1.7644 2.03125 1.21875 2.5769 1.21875 3.25V10.5625C1.21875 11.2356 1.7644 11.7812 2.4375 11.7812H10.5625C11.2356 11.7812 11.7812 11.2356 11.7812 10.5625V3.25C11.7812 2.5769 11.2356 2.03125 10.5625 2.03125Z" stroke="#94A6BE" strokeWidth="0.8" strokeLinejoin="round" />
@@ -34,9 +34,9 @@ export const Card = ({topic, date, title}) => {
                             </defs>
                         </svg>
                         <p>{date}</p>
-                    </S.CardDate>
-                </S.CardContent>
-            </S.CardContainer>
-        </S.CardsItem>
+                    </CardDate>
+                </CardContent>
+            </CardsCard>
+        </CardsItem>
     )
 }

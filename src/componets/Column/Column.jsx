@@ -1,3 +1,4 @@
+
 import { Card } from "../Card/Card"
 import { Cards } from "../Card/card.styled"
 import { ColumnTitle, MainColumn } from "./column.styled"

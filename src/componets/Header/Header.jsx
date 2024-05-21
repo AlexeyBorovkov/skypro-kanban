@@ -26,7 +26,7 @@ export const Header = ({addCard, globalTheme, setGlobalTheme}) => {
 						<S.HeaderUser href="#user-set-target" onClick={(event) => handlerOpenModalWindow(event)}>Ivan Ivanov</S.HeaderUser>
 							{isOpenedModalUserWindow && (
 								<S.HeaderPopUserSet id="user-set-target">
-									<p className="pop-user-set__name">Ivan Ivanov</p>
+									<p>Ivan Ivanov</p>
 									<S.UserMail>ivan.ivanov@gmail.com</S.UserMail>
 									<div className="pop-user-set__theme">
 										<p>Темная тема</p>
