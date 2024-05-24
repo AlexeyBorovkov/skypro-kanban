@@ -1,25 +1,28 @@
+import { Link } from "react-router-dom"
 import { CardsCard, CardGroup, CardsItem, CardContent, CardDate, CardTheme, CardBtn, CardTitle } from "./card.styled.js"
 import { colors } from "./card.styled.js"
-export const Card = ({topic, date, title}) => {
+
+export const Card = ({card}) => {
   
+    
     return (
         <CardsItem>
             <CardsCard className="card">
                 <CardGroup>
-                    <CardTheme $color={colors[topic]}>
-                        <p>{topic}</p>
+                    <CardTheme $color={colors[card.topic]}>
+                        <p>{card.topic}</p>
                     </CardTheme>
-                    <a href="#popBrowse" target="_self">
+                    <Link to={`/card/${card.id}`}>
                         <CardBtn>
                             <div></div>
                             <div></div>
                             <div></div>
                         </CardBtn>
-                    </a>
+                    </Link>
                 </CardGroup>
                 <CardContent>
                     <a href="" target="_blank">
-                        <CardTitle>{title}</CardTitle>
+                        <CardTitle>{card.title}</CardTitle>
                     </a>
                     <CardDate>
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -33,7 +36,7 @@ export const Card = ({topic, date, title}) => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p>{date}</p>
+                        <p>{card.date}</p>
                     </CardDate>
                 </CardContent>
             </CardsCard>

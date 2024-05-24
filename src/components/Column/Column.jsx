@@ -10,7 +10,7 @@ export const Column = ({title, cards}) => {
                 <p>{title}</p>
             </ColumnTitle>
             <Cards>
-                {cards.map(el => <Card key={el.id} date={el.date} topic={el.topic} title={el.title} />)}
+                {cards.map(el => <Card key={el.id} card={el}/>)}
             </Cards>
         </MainColumn>	
     )
