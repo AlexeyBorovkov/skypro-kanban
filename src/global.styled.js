@@ -45,6 +45,14 @@ body {
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   color: #000000;
 }
+
+.wrapper {
+  max-width: 100%;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: #F1F1F1;
+}
 `
 
 export const Wrapper = styled.div`
@@ -52,9 +60,9 @@ export const Wrapper = styled.div`
   width: 100vw;
   min-height: 100vh;
   overflow: hidden;
-  background-color: ${(props) => props.theme.body};
-
+  background-color: ${({theme}) => theme.body};
 `
+
 export const Container = styled.div`
   max-width: 1260px;
   width: 100%;
@@ -78,26 +86,32 @@ export const Hover03 = css`
   color: #FFFFFF;
 }
 `
+
 const orange = css`
-  background-color: #FFE4C2;
-  color: #FF6D00; 
+background-color: ${({theme}) => theme.orangeBg}; 
+color: ${({theme}) => theme.orangeText};
 `
+
 const green = css`
-  background-color: #B4FDD1;
-  color: #06B16E;
+background-color: ${({theme}) => theme.greenBg}; 
+color: ${({theme}) => theme.greenText};
 `
+
 const purple = css`
-  background-color: #E9D4FF;
-  color: #9A48F1;
+background-color: ${({theme}) => theme.purpleBg}; 
+color: ${({theme}) => theme.purpleText};
 `
 
 export const colorTheme = (color) => css`
-  ${color === 'orange' && orange}
-  ${color === 'green' && green}
-  ${color === 'purple' && purple}
+${color === 'orange' && orange} 
+${color === 'green' && green} 
+${color === 'purple' && purple} 
 `
-export const colours = {
-  'Web Design': '_orange',
-  'Research': '_green',
-  'Copywriting': '_purple'
-}
+
+export const BtnBg = css`
+  border-radius: 4px;
+  background: #565EEF;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+`
