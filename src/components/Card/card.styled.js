@@ -89,7 +89,7 @@ const color = {
     backgroundColor: '#B4FDD1'
   },
   purple: {
-    color: '9A48F1',
+    color: '#9A48F1',
     backgroundColor: '#E9D4FF'
   }
 }

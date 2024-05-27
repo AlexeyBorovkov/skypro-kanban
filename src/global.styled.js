@@ -70,18 +70,6 @@ export const Container = styled.div`
   padding: 0 30px;
 `
 
-// export const Hover01 = (element) => styled[element]`
-// &:hover {
-//   background-color: #33399b;
-// }
-// `
-
-// export const Hover02 = (element) => styled[element]`
-// &:hover {
-//   color: #33399b;
-// }
-// `
-
 export const Hover01 = css`
 &:hover {
   background-color: #33399b;
@@ -97,4 +85,33 @@ export const Hover03 = css`
   background-color: #33399b;
   color: #FFFFFF;
 }
+`
+
+const orange = css`
+background-color: ${({theme}) => theme.orangeBg}; 
+color: ${({theme}) => theme.orangeText};
+`
+
+const green = css`
+background-color: ${({theme}) => theme.greenBg}; 
+color: ${({theme}) => theme.greenText};
+`
+
+const purple = css`
+background-color: ${({theme}) => theme.purpleBg}; 
+color: ${({theme}) => theme.purpleText};
+`
+
+export const colorTheme = (color) => css`
+${color === 'orange' && orange} 
+${color === 'green' && green} 
+${color === 'purple' && purple} 
+`
+
+export const BtnBg = css`
+  border-radius: 4px;
+  background: #565EEF;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
 `
