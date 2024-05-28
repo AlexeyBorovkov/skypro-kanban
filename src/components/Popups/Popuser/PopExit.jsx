@@ -5,7 +5,7 @@ import { paths } from "../../../routesPaths"
 export const PopUser= ({setIsAuth}) => {
 	const navigate = useNavigate()
 	const logOut = () => {
-		setIsAuth(false)
+		setIsAuth('')
 		navigate(paths.LOGIN)
 	}
     return (

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colorTheme } from "../../global.styled";
 
 export const Cards = styled.div`
   width: 100%;
@@ -79,27 +80,14 @@ export const CardDate = styled.div`
 `
 
 
-const color = {
-  orange: {
-    color: '#FF6D00',
-    backgroundColor: '#FFE4C2'
-  },
-  green: {
-    color: '#06B16E',
-    backgroundColor: '#B4FDD1'
-  },
-  purple: {
-    color: '#9A48F1',
-    backgroundColor: '#E9D4FF'
-  }
-}
+
 
 export const CardTheme = styled.div`
   width: auto;
   height: 20px;
   padding: 5px 14px;
   border-radius: 18px;
-  ${(props) => color[props.$color]};
+  ${(props) => colorTheme(props.$color)};
 
   p {
   font-size: 10px;
@@ -130,8 +118,3 @@ export const CardTitle = styled.h3`
   color: ${({theme}) => theme.text};
   margin-bottom: 10px;
 `
-export const colors = {
-  'Web Design': 'orange',
-  'Research': 'green',
-  'Copywriting': 'purple', 
-}

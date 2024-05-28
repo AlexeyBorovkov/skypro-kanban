@@ -426,7 +426,7 @@
 .categories__p {
   margin-bottom: 14px;
 }
-.categories__theme {
+/* .categories__theme {
   display: inline-block;
   width: auto;
   height: 30px;
@@ -440,7 +440,7 @@
   font-weight: 600;
   line-height: 14px;
   white-space: nowrap;
-}
+} */
 
 .pop-browse {
   width: 100%;
@@ -781,3 +781,22 @@
 }
 
 
+/* ._orange {
+  background-color: #FFE4C2;
+  color: #FF6D00;
+}
+
+._green {
+  background-color: #B4FDD1;
+  color: #06B16E;
+}
+
+._purple {
+  background-color: #E9D4FF;
+  color: #9A48F1;
+}
+
+._gray {
+  background: #94A6BE;
+  color: #FFFFFF;
+} */

@@ -88,18 +88,18 @@ export const Hover03 = css`
 `
 
 const orange = css`
-background-color: ${({theme}) => theme.orangeBg}; 
-color: ${({theme}) => theme.orangeText};
+background-color: #FFE4C2; 
+color: #FF6D00;
 `
 
 const green = css`
-background-color: ${({theme}) => theme.greenBg}; 
-color: ${({theme}) => theme.greenText};
+background-color: #B4FDD1;
+color: #06B16E;
 `
 
 const purple = css`
-background-color: ${({theme}) => theme.purpleBg}; 
-color: ${({theme}) => theme.purpleText};
+background-color: #E9D4FF;
+color: #9A48F1;
 `
 
 export const colorTheme = (color) => css`
@@ -107,6 +107,11 @@ ${color === 'orange' && orange}
 ${color === 'green' && green} 
 ${color === 'purple' && purple} 
 `
+export const colors = {
+  'Web Design': 'orange',
+  'Research': 'green',
+  'Copywriting': 'purple', 
+}
 
 export const BtnBg = css`
   border-radius: 4px;

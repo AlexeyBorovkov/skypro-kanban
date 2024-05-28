@@ -1,10 +1,11 @@
 import { Calendar } from "../../Calendar/Calendar.jsx"
 import { paths } from "../../../routesPaths.js"
-import { BtnBrowse, BtnLink } from "./popBrowse.styled.js"
+import { BtnBrowse, BtnLink, CategoriesTheme } from "./popBrowse.styled.js"
 import { useParams } from "react-router-dom"
 
-export const PopBrowse = () => {
 
+export const PopBrowse = () => {
+ 
     const {id} = useParams()
     
     return (
@@ -14,9 +15,9 @@ export const PopBrowse = () => {
                     <div className="pop-browse__content">
                         <div className="pop-browse__top-block">
                             <h3 className="pop-browse__ttl">Название задачи {id}</h3>
-                            <div className="categories__theme theme-top _orange _active-category">
-                                <p className="_orange">Web Design</p>
-                            </div>
+                            <CategoriesTheme>
+                                    <p>Web Design</p>
+                            </CategoriesTheme>
                         </div>
                         <div className="pop-browse__status status">
                             <p className="status__p subttl">Статус</p>
