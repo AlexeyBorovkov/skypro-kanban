@@ -5,9 +5,6 @@ import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from './themeStyle.js'
 import {AppRoutes} from "./AppRoutes.jsx";
 
-
-
-
 function App() {
   const [globalTheme, setGlobalTheme] = useState(true)
 

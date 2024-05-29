@@ -18,7 +18,6 @@ export const RegisterPage = () => {
     const [errorMsg, setErrorMsg] = useState('')
 
    
-
     const [inputValue, setInputValue] = useState({
         login: '',
         name: '',

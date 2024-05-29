@@ -79,15 +79,12 @@ export const CardDate = styled.div`
  }
 `
 
-
-
-
 export const CardTheme = styled.div`
   width: auto;
   height: 20px;
   padding: 5px 14px;
   border-radius: 18px;
-  ${(props) => colorTheme(props.$color)};
+  ${(props) => colorTheme(props.$color)}
 
   p {
   font-size: 10px;

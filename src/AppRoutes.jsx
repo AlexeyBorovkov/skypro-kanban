@@ -9,7 +9,6 @@ import { NotFoundPage } from "./pages/NotFoundPage/NotFoundPage.jsx";
 import { PopBrowsePage } from "./pages/PopUps/PopBrowse/PopBrowsePage.jsx";
 import { PopExitPage } from "./pages/PopUps/ExitPage/PopExitPage.jsx";
 
-
 function getLocalStorage() {
     let user = ''
     try {
@@ -20,7 +19,6 @@ function getLocalStorage() {
         return ''
     }
 }
-
 
 export const AppRoutes = ({globalTheme, setGlobalTheme}) => {
     const [isAuth, setIsAuth] = useState(getLocalStorage)

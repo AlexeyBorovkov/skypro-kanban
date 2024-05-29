@@ -1,25 +1,25 @@
+
 import { Container } from "../../global.styled"
+import { LoaderItem } from "../../components/loader/LoaderItem.jsx"
 import { Column } from "../Column/Column"
 import * as S from './main.styled.js'
-import { LoaderItem } from "../../loader/LoaderItem.jsx"
 
-export const Main = ({cards, isLoading, errorMsg}) => {
+export const Main = ({ cards, isLoading, errorMsg }) => {
+    const statusTitles = ['Без статуса', 'Нужно сделать', 'В работе', 'Тестирование', 'Готово'];
+  
     return (
-        <S.Main> 
-            <Container>
-                <S.MainBlock>
-                    {errorMsg ? <p>{errorMsg}</p>:(isLoading ? LoaderItem() : (
-                        <S.MainContent>
-                        <Column title={'Без статуса'} cards={cards.filter(el => el.status === 'Без статуса')}/>				
-                        <Column title={'Нужно сделать'} cards={cards.filter(el => el.status === 'Нужно сделать')}/>				
-                        <Column title={'В работе'} cards={cards.filter(el => el.status === 'В работе')}/>				
-                        <Column title={'Тестирование'} cards={cards.filter(el => el.status === 'Тестирование')}/>				
-                        <Column title={'Готово'} cards={cards.filter(el => el.status === 'Готово')}/>				
-                        </S.MainContent>)
-                        )
-                    }
-                </S.MainBlock>
-            </Container>
-        </S.Main>
-    )
-}
+      <S.Main>
+        <Container>
+          <S.MainBlock>
+            {errorMsg ? <p>{errorMsg}</p> : (isLoading ? LoaderItem() : (
+              <S.MainContent>
+                {statusTitles.map((title, index) => (
+                  <Column key={index} title={title} cards={cards.filter(el => el.status === title)} />
+                ))}
+              </S.MainContent>
+            ))}
+          </S.MainBlock>
+        </Container>
+      </S.Main>
+    );
+  }

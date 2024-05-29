@@ -37,7 +37,7 @@ export const MainPage = ({globalTheme, setGlobalTheme, isAuth}) => {
         }).finally(() => {
             setIsLoading(false)
         })
-    },[])
+    },[isAuth.token])
 
     return(
         <Wrapper>
