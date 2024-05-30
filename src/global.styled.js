@@ -70,6 +70,18 @@ export const Container = styled.div`
   padding: 0 30px;
 `
 
+// export const Hover01 = (element) => styled[element]`
+// &:hover {
+//   background-color: #33399b;
+// }
+// `
+
+// export const Hover02 = (element) => styled[element]`
+// &:hover {
+//   color: #33399b;
+// }
+// `
+
 export const Hover01 = css`
 &:hover {
   background-color: #33399b;
@@ -88,18 +100,18 @@ export const Hover03 = css`
 `
 
 const orange = css`
-background-color: ${({theme}) => theme.orangeBg}; 
-color: ${({theme}) => theme.orangeText};
+background-color: #FFE4C2; 
+color: #FF6D00;
 `
 
 const green = css`
-background-color: ${({theme}) => theme.greenBg}; 
-color: ${({theme}) => theme.greenText};
+background-color: #B4FDD1;
+color: #06B16E;
 `
 
 const purple = css`
-background-color: ${({theme}) => theme.purpleBg}; 
-color: ${({theme}) => theme.purpleText};
+background-color: #E9D4FF;
+color: #9A48F1;
 `
 
 export const colorTheme = (color) => css`
@@ -115,3 +127,8 @@ export const BtnBg = css`
   outline: none;
   color: #FFFFFF;
 `
+export const colors = {
+  'Web Design': 'orange',
+  'Research': 'green',
+  'Copywriting': 'purple', 
+}

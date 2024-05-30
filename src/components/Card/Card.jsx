@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 import { CardsCard, CardGroup, CardsItem, CardContent, CardDate, CardTheme, CardBtn, CardTitle } from "./card.styled.js"
-import { colors } from "./card.styled.js"
+import { colors } from "../../global.styled.js"
 
 export const Card = ({card}) => {
-  
+    
     
     return (
         <CardsItem>
@@ -12,7 +12,7 @@ export const Card = ({card}) => {
                     <CardTheme $color={colors[card.topic]}>
                         <p>{card.topic}</p>
                     </CardTheme>
-                    <Link to={`/card/${card.id}`}>
+                    <Link to={`/card/${card._id}`}>
                         <CardBtn>
                             <div></div>
                             <div></div>
