@@ -99,19 +99,26 @@ export const Hover03 = css`
 }
 `
 
+export const Hover04 = css`
+&:hover {
+  background: #94A6BE;
+  color: #FFFFFF;
+}
+`
+
 const orange = css`
-background-color: #FFE4C2; 
-color: #FF6D00;
+background-color: ${({theme}) => theme.orangeBg}; 
+color: ${({theme}) => theme.orangeText};
 `
 
 const green = css`
-background-color: #B4FDD1;
-color: #06B16E;
+background-color: ${({theme}) => theme.greenBg}; 
+color: ${({theme}) => theme.greenText};
 `
 
 const purple = css`
-background-color: #E9D4FF;
-color: #9A48F1;
+background-color: ${({theme}) => theme.purpleBg}; 
+color: ${({theme}) => theme.purpleText};
 `
 
 export const colorTheme = (color) => css`
@@ -127,8 +134,3 @@ export const BtnBg = css`
   outline: none;
   color: #FFFFFF;
 `
-export const colors = {
-  'Web Design': 'orange',
-  'Research': 'green',
-  'Copywriting': 'purple', 
-}

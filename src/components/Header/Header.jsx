@@ -5,12 +5,10 @@ import { Link } from "react-router-dom";
 import { paths } from "../../routesPaths.js";
 
 
-
-
-export const Header = ({addCard, globalTheme, setGlobalTheme, isAuth}) => {
+export const Header = ({ globalTheme, setGlobalTheme, user}) => {
 	const [isOpenedModalUserWindow, setIsOpenedModalUserWindow] = useState(false);
 
-	function handlerOpenModalWindow(event) {
+	const OpenModal= (event) => {
 		event.preventDefault()
 		setIsOpenedModalUserWindow(prev => !prev)
 	}
@@ -26,12 +24,12 @@ export const Header = ({addCard, globalTheme, setGlobalTheme, isAuth}) => {
 						<a href="" target="_self"><img src="/img/logo_dark.png" alt="logo"/></a>
 					</S.HeaderLogoDark>
 					<S.HeaderNav>
-						<S.HeaderBtnMainNew id="btnMainNew"><a href="#popNewCard" onClick={addCard}>Создать новую задачу</a></S.HeaderBtnMainNew>
-						<S.HeaderUser href="#user-set-target" onClick={(event) => handlerOpenModalWindow(event)}>{isAuth.name}</S.HeaderUser>
+						<S.HeaderBtnMainNew id="btnMainNew"><Link to={paths.NEW_CARD}>Создать новую задачу</Link></S.HeaderBtnMainNew>
+						<S.HeaderUser href="#user-set-target" onClick={(event) => OpenModal(event)}>{user.name}</S.HeaderUser>
 							{isOpenedModalUserWindow && (
 								<div className="header__pop-user-set pop-user-set" id="user-set-target">
-									<p className="pop-user-set__name">{isAuth.name}</p>
-									<p className="pop-user-set__mail">{isAuth.login}</p>
+									<p className="pop-user-set__name">{user.name}</p>
+									<p className="pop-user-set__mail">{user.login}</p>
 									<div className="pop-user-set__theme">
 										<p>Темная тема</p>
 										<input type="checkbox" className="checkbox" name="checkbox" onChange={()=> setGlobalTheme(!globalTheme)}/>

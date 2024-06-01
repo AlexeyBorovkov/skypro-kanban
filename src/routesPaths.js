@@ -6,4 +6,5 @@ export const paths = {
     CARD_ID: '/card/:id',
     NOT_FOUND: '*',
     EXIT: '/exit',
+    NEW_CARD: '/newCard'
 }

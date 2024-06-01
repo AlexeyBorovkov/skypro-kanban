@@ -4,11 +4,17 @@ import App from './App.jsx'
 import '/img/logo.png'
 import '/img/logo_dark.png'
 import {BrowserRouter} from "react-router-dom";
+import { UserProvider } from './context/userContext.jsx'
+import { CardsProvider } from './context/cardsContext.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <BrowserRouter>
-          <App />
+          <UserProvider>
+              <CardsProvider>
+                  <App />
+             </CardsProvider>
+          </UserProvider>
       </BrowserRouter>
   </React.StrictMode>,
 )
