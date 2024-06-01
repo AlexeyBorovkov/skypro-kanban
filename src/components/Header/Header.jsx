@@ -5,13 +5,16 @@ import { Link } from "react-router-dom";
 import { paths } from "../../routesPaths.js";
 
 
-export const Header = ({ globalTheme, setGlobalTheme, user}) => {
-	const [isOpenedModalUserWindow, setIsOpenedModalUserWindow] = useState(false);
+export const Header = ({globalTheme, setGlobalTheme, user}) => {
+	const [isOpenModal, setIsOpenModal] = useState(false)
 
-	const OpenModal= (event) => {
+
+
+	function OpenModal(event) {
 		event.preventDefault()
-		setIsOpenedModalUserWindow(prev => !prev)
+		setIsOpenModal(prev => !prev)
 	}
+
 
     return (
         <S.Header>
@@ -26,16 +29,16 @@ export const Header = ({ globalTheme, setGlobalTheme, user}) => {
 					<S.HeaderNav>
 						<S.HeaderBtnMainNew id="btnMainNew"><Link to={paths.NEW_CARD}>Создать новую задачу</Link></S.HeaderBtnMainNew>
 						<S.HeaderUser href="#user-set-target" onClick={(event) => OpenModal(event)}>{user.name}</S.HeaderUser>
-							{isOpenedModalUserWindow && (
-								<div className="header__pop-user-set pop-user-set" id="user-set-target">
-									<p className="pop-user-set__name">{user.name}</p>
-									<p className="pop-user-set__mail">{user.login}</p>
-									<div className="pop-user-set__theme">
+							{isOpenModal&& (
+								<S.HeaderPopUserSet id="user-set-target">
+									<S.PopUserSetName>{user.name}</S.PopUserSetName>
+									<S.PopUserSetEmail>{user.login}</S.PopUserSetEmail>
+									<S.PopUserSetTheme>
 										<p>Темная тема</p>
 										<input type="checkbox" className="checkbox" name="checkbox" onChange={()=> setGlobalTheme(!globalTheme)}/>
-									</div>
-									<button type="button" className="_hover03"><Link to={paths.EXIT}>Выйти</Link></button>
-								</div>
+									</S.PopUserSetTheme>
+									<S.HeaderUserButtonExit to={paths.EXIT} type="button">Выйти</S.HeaderUserButtonExit>
+								</S.HeaderPopUserSet>
 							)}
 					</S.HeaderNav>					
 				</S.HeaderBlock>

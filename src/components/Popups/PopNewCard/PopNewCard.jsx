@@ -6,6 +6,7 @@ import { UserContext } from "../../../context/userContext"
 import { CardsContext } from "../../../context/cardsContext"
 import { ErrorPopNewCard } from "../../../pages/RegisterPage/registerPage.styled"
 import { CalendarTtl, CategoriesP, CategoriesThemeGreen, CategoriesThemeOrange, CategoriesThemePurple, CategoriesThemes, DP, FormNewArea, FormNewBlock, FormNewCreate, FormNewInput, PopNewCardBlock, PopNewCardCalendar, PopNewCardCategoriesCategories, PopNewCardClose, PopNewCardContainer, PopNewCardContent, PopNewCardDiv, PopNewCardForm, PopNewCardTtl, PopNewCardWrap, RadioInput, SubttlLabel, WrapperRadio } from "./popNewCard.styled"
+import { ru } from "date-fns/locale"
 
 export const PopNewCard= () => {
     const {user} = useContext(UserContext)
@@ -73,7 +74,7 @@ export const PopNewCard= () => {
                             </PopNewCardForm>
                             <PopNewCardCalendar>
                                 <CalendarTtl>Даты</CalendarTtl>
-                                <DP mode="single" selected={date} onSelect={setDate} footer={getDateFormat(date)}/>
+                                <DP locale={ru} mode="single" selected={date} onSelect={setDate} footer={getDateFormat(date)}/>
                             </PopNewCardCalendar>
                         </PopNewCardWrap>
                         <PopNewCardCategoriesCategories>

@@ -4,17 +4,13 @@ import { BtnBrowse, BtnBrowseEditBtnBor, BtnGroup, BtnLink, CategoriesPsubttl, C
 import { useParams } from "react-router-dom"
 import { CardsContext } from "../../../context/cardsContext.jsx"
 import { useContext } from "react"
-
+import { colors } from "../../../global.styled.js"
 
 export const PopBrowse = () => {
 
     const {cards} = useContext(CardsContext)
     const {id} = useParams()
-    const colors = {
-        'Web Design': 'orange',
-        'Research': 'green',
-        'Copywriting': 'purple', 
-    }
+   
     const tasksCard = cards.find((card) => card._id === id);
 
 

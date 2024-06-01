@@ -227,11 +227,20 @@ export const FormNewCreate = styled.button`
 `
 
 export const DP = styled(DayPicker)`
---rdp-cell-size: 22px;
---rdp-caption-font-size: 14px;
-font-size: 12px;
+font-size: 10px;
+color: #94A6BE;
 margin: 0;
 --rdp-accent-color: #c4c4c4;
+--rdp-cell-size: 22px;
+    --rdp-caption-font-size: 14px;
+    --rdp-accent-color: #0000ff;
+    --rdp-background-color: #e7edff;
+    --rdp-accent-color-dark: #3003e1;
+    --rdp-background-color-dark: #180270;
+    --rdp-outline: 2px solid var(--rdp-accent-color);
+    --rdp-outline-selected: 3px solid var(--rdp-accent-color);
+    --rdp-selected-color: #fff
+    
 `
 
 export const RadioInput = styled.input`
@@ -240,6 +249,10 @@ display: none;
 
 export const WrapperRadio = styled.div`
 opacity: ${({$isActive}) => $isActive ? '1' : '0.4'};
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 14px;
+  white-space: nowrap;
 
 `
 
@@ -256,18 +269,19 @@ export const CategoriesThemeOrange = styled(CategoriesThemeColor)`
 display: inline-block;
 width: auto;
 height: 30px;
-padding: 6px 20px;
+padding: 8px 20px;
 border-radius: 24px;
 margin-right: 7px;
 background-color: #FFE4C2;
 color: #FF6D00;
+
 `
 
 export const CategoriesThemeGreen = styled(CategoriesThemeColor)`
 display: inline-block;
 width: auto;
 height: 30px;
-padding: 6px 20px;
+padding: 8px 20px;
 border-radius: 24px;
 margin-right: 7px;
 background-color: #B4FDD1;
@@ -278,7 +292,7 @@ export const CategoriesThemePurple = styled(CategoriesThemeColor)`
 display: inline-block;
 width: auto;
 height: 30px;
-padding: 6px 20px;
+padding: 8px 20px;
 border-radius: 24px;
 margin-right: 7px;
 background-color: #E9D4FF;

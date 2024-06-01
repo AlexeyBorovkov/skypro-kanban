@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { Hover01, Hover02 } from "../../global.styled";
+import { Hover01, Hover02, Hover03} from "../../global.styled";
+import { Link } from "react-router-dom";
+
 
 export const Header = styled.header`
   width: 100%;
@@ -19,9 +21,7 @@ export const HeaderBlock = styled.div`
   padding: 0 10px;
 `
 
-// export const HeaderLogoImg = styled.div`
-// width: 85px;
-// `
+
 
 export const HeaderLogoLight = styled.div`
 display: ${({theme}) => !theme.isDark ? 'block' : 'none'};
@@ -46,7 +46,7 @@ export const HeaderNav = styled.nav`
 `
 
 export const HeaderBtnMainNew = styled.button`
- width: 178px;
+  width: 178px;
   height: 30px;
   border-radius: 4px;
   background-color: #565EEF;
@@ -93,4 +93,119 @@ export const HeaderUser = styled.a`
 }
 
 ${Hover02}
+`
+
+export const HeaderPopUserSet = styled.div`
+  display: block;
+  position: absolute;
+  top: 61px;
+  right: 0;
+  width: 213px;
+  height: 205px;
+  border-radius: 10px;
+  border: 0.7px solid rgba(148, 166, 190, 0.4);
+  background-color: ${({theme}) => theme.primary};
+  box-shadow: 0px 10px 39px 0px rgba(26, 56, 101, 0.21);
+  padding: 34px;
+  text-align: center;
+  z-index: 2;
+
+  button {
+  width: 72px;
+  height: 30px;
+  background: transparent;
+  color: ${({theme}) => theme.text2};
+  border-radius: 4px;
+  border: 1px solid #565EEF;
+}
+
+button a {
+  color: ${({theme}) => theme.buttonExit};
+}
+`
+
+export const PopUserSetName = styled.p`
+  color: ${({theme}) => theme.text2};
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: -0.14px;
+  margin-bottom: 4px;
+`
+
+export const PopUserSetEmail = styled.p`
+  color: #94A6BE;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.14px;
+  margin-bottom: 10px;
+`
+
+export const PopUserSetTheme = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+  p {
+  color: ${({theme}) => theme.themeColortext};
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: -0.14px;
+}
+
+input[type=checkbox] {
+  position: relative;
+  width: 24px;
+  height: 13px;
+  border-radius: 100px;
+  background: #EAEEF6;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+input[type=checkbox]::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: ${({theme}) => theme.dotColor};
+  transition: 0.5s;
+}
+
+input:checked[type=checkbox]::before {
+  left: 12px;
+}
+`
+// не работает
+export const HeaderUserButtonExit = styled(Link)`
+
+  width: 80px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 0.7px solid var(--palette-navy-60, #565eef);
+  outline: none;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  letter-spacing: -0.14px;
+  color: #FFFFFF;
+  color: #565eef;
+  margin-left: 30px;
+
+  a {
+  color: #FFFFFF;
+ }
+
+ ${Hover03}
 `
