@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
 import { CardsCard, CardGroup, CardsItem, CardContent, CardDate, CardTheme, CardBtn, CardTitle } from "./card.styled.js"
 import { colors } from "../../global.styled.js"
+import { format } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 export const Card = ({card}) => {
  
+    const formattedDate = format(new Date(card.date), 'd.MM.yy', { locale: ru });
     
     return (
         <CardsItem>
@@ -36,7 +39,7 @@ export const Card = ({card}) => {
                                 </clipPath>
                             </defs>
                         </svg>
-                        <p>{card.date}</p>
+                        <p>{formattedDate}</p>
                     </CardDate>
                 </CardContent>
             </CardsCard>

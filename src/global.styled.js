@@ -128,3 +128,9 @@ export const colors = {
   'Research': 'green',
   'Copywriting': 'purple', 
 }
+export const Subttl = css`
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+`;
