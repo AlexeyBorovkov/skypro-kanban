@@ -5,8 +5,9 @@ import { paths } from "../../../routesPaths"
 import { UserContext } from "../../../context/userContext"
 import { CardsContext } from "../../../context/cardsContext"
 import { ErrorPopNewCard } from "../../../pages/RegisterPage/registerPage.styled"
-import { CalendarTtl, CategoriesP, CategoriesThemeGreen, CategoriesThemeOrange, CategoriesThemePurple, CategoriesThemes, DP, FormNewArea, FormNewBlock, FormNewCreate, FormNewInput, PopNewCardBlock, PopNewCardCalendar, PopNewCardCategoriesCategories, PopNewCardClose, PopNewCardContainer, PopNewCardContent, PopNewCardDiv, PopNewCardForm, PopNewCardTtl, PopNewCardWrap, RadioInput, SubttlLabel, WrapperRadio } from "./popNewCard.styled"
+import { CalendarTtl, CategoriesP, CategoriesThemeGreen, CategoriesThemeOrange, CategoriesThemePurple, CategoriesThemes, FormNewArea, FormNewBlock, FormNewCreate, FormNewInput, PopNewCardBlock, PopNewCardCalendar, PopNewCardCategoriesCategories, PopNewCardClose, PopNewCardContainer, PopNewCardContent, PopNewCardDiv, PopNewCardForm, PopNewCardTtl, PopNewCardWrap, RadioInput, SubttlLabel, WrapperRadio } from "./popNewCard.styled"
 import { ru } from "date-fns/locale"
+import { Calendar } from "../../Calendar/Calendar.jsx"
 
 export const PopNewCard= () => {
     const {user} = useContext(UserContext)
@@ -19,7 +20,7 @@ export const PopNewCard= () => {
     const [inputValue, setInputValue] = useState({
         title: '',
         status: 'Без статуса',
-        description: ''
+        description: '',
     })
 
     const onChangeInput = (e) => {
@@ -30,8 +31,8 @@ export const PopNewCard= () => {
 	const onAddNewCard = () => {
         setError('')
 
-        if(!inputValue.description) {
-            return setError('Введите описание задачи')
+        if(!inputValue.description || !inputValue.title) {
+            return setError('Все поля должны быть заполнены')
         }
 
         const title = inputValue.title || 'Новая задача'
@@ -74,7 +75,7 @@ export const PopNewCard= () => {
                             </PopNewCardForm>
                             <PopNewCardCalendar>
                                 <CalendarTtl>Даты</CalendarTtl>
-                                <DP locale={ru} mode="single" selected={date} onSelect={setDate} footer={getDateFormat(date)}/>
+                                <Calendar locale={ru} mode="single" selected={date} onSelect={setDate} footer={getDateFormat(date)}/>
                             </PopNewCardCalendar>
                         </PopNewCardWrap>
                         <PopNewCardCategoriesCategories>
@@ -95,7 +96,7 @@ export const PopNewCard= () => {
                             </CategoriesThemes>
                         </PopNewCardCategoriesCategories>
                         <ErrorPopNewCard>{error && error}</ErrorPopNewCard>
-                        {/* перенести из RP */}
+                        
                         <FormNewCreate onClick={onAddNewCard} id="btnCreate">Создать задачу</FormNewCreate>
                     </PopNewCardContent>
                 </PopNewCardBlock>

@@ -1,4 +1,4 @@
-import { DayPicker } from "react-day-picker";
+
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Hover01} from "../../../global.styled";
@@ -226,22 +226,7 @@ export const FormNewCreate = styled.button`
   ${Hover01}
 `
 
-export const DP = styled(DayPicker)`
-font-size: 10px;
-color: #94A6BE;
-margin: 0;
---rdp-accent-color: #c4c4c4;
---rdp-cell-size: 22px;
-    --rdp-caption-font-size: 14px;
-    --rdp-accent-color: #0000ff;
-    --rdp-background-color: #e7edff;
-    --rdp-accent-color-dark: #3003e1;
-    --rdp-background-color-dark: #180270;
-    --rdp-outline: 2px solid var(--rdp-accent-color);
-    --rdp-outline-selected: 3px solid var(--rdp-accent-color);
-    --rdp-selected-color: #fff
-    
-`
+
 
 export const RadioInput = styled.input`
 display: none;

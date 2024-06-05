@@ -3,17 +3,22 @@ import { paths } from "../../../routesPaths.js"
 import { BtnBrowse, BtnBrowseEditBtnBor, BtnGroup, BtnLink, CategoriesPsubttl, CategoriesTheme, FormBrowseArea, FormBrowseBlock, PopBrowseBlock, PopBrowseBtnBrowse, PopBrowseBtnEdit, PopBrowseContainer, PopBrowseContent, PopBrowseDiv, PopBrowseForm, PopBrowseStatus, PopBrowseTopBlock, PopBrowseTtl, PopBrowseWrap,  StatusP, StatusTheme, StatusThemes, SubttlBrowseLabel, ThemeDownCategories } from "./popBrowse.styled.js"
 import { useParams } from "react-router-dom"
 import { CardsContext } from "../../../context/cardsContext.jsx"
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { colors } from "../../../global.styled.js"
+import { ru } from "date-fns/locale"
 
 export const PopBrowse = () => {
 
     const {cards} = useContext(CardsContext)
+    const [date, setDate] = useState(new Date())
     const {id} = useParams()
    
     const tasksCard = cards.find((card) => card._id === id);
 
-
+    const getDateFormat = (date) => {
+        const formatDate = date.toLocaleDateString('ru-RU')
+        return <p style={{ marginTop: '10px'}}>Срок исполнения:<br/>{formatDate}</p>
+    }
     
     return (
         <PopBrowseDiv id="popBrowse">
@@ -53,7 +58,7 @@ export const PopBrowse = () => {
                                     <FormBrowseArea name="text" id="textArea01"  readOnly placeholder="Введите описание задачи..."></FormBrowseArea>
                                 </FormBrowseBlock>
                             </PopBrowseForm>
-                            <Calendar/>
+                            <Calendar locale={ru} mode="single" selected={date} onSelect={setDate} footer={getDateFormat(date)}/>
                         </PopBrowseWrap>
                         <ThemeDownCategories>
                             <CategoriesPsubttl>Категория</CategoriesPsubttl>
