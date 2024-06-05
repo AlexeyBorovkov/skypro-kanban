@@ -21,6 +21,7 @@ export const PopNewCard= () => {
         title: '',
         status: 'Без статуса',
         description: '',
+
     })
 
     const onChangeInput = (e) => {
@@ -31,14 +32,14 @@ export const PopNewCard= () => {
 	const onAddNewCard = () => {
         setError('')
 
-        if(!inputValue.description || !inputValue.title) {
+        if(!inputValue.description || !inputValue.title || !topic || !date) {
             return setError('Все поля должны быть заполнены')
         }
 
-        const title = inputValue.title || 'Новая задача'
+        const title = inputValue.title.trim() ? inputValue.title : 'Новая задача';
      
 		const newTask = {
-			...inputValue, topic, title, date
+			...inputValue, topic, title, date: date.toISOString
 		}
 
 		addNewCard({token: user.token, newTask: newTask})

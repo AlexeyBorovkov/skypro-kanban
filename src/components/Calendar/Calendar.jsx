@@ -10,9 +10,9 @@ export const Calendar = ({date, setDate}) => {
         const formatDate = date.toLocaleDateString("RU-ru");
         setValue(<S.TitleDayPicker>Срок исполнения: <S.SpanDayPicker>{formatDate}</S.SpanDayPicker></S.TitleDayPicker>);
     }
-
+  
     return <S.Calendar className="pop-new-card__calendar">
         <S.CalendarTtl>Даты</S.CalendarTtl>
-        <S.DayPick onDayClick={handleDayClick} mode="single" selected={date} onSelect={setDate} footer={value} locale={ru} />
+            <S.DayPick onDayClick={handleDayClick} mode="single" selected={date} onSelect={setDate} footer={value} locale={ru} />
     </S.Calendar>;
 }
