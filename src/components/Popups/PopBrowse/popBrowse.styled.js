@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { BtnBg, Hover01, Hover03, Hover04} from "../../../global.styled";
+import { BtnBg, Hover01, Hover03} from "../../../global.styled";
 import { Link } from "react-router-dom";
 import { topicColors} from "../../../data";
 
@@ -90,7 +90,6 @@ export const CategoriesTheme = styled.div`
   display: inline-block;
   width: auto;
   height: 30px;
-  text-align: center;
   padding: 8px 20px;
   border-radius: 24px;
   margin-right: 7px;
@@ -126,20 +125,27 @@ export const StatusThemes= styled.div`
 `
 
 export const StatusTheme = styled.div`
-  border-radius: 24px;
-  border: 0.7px solid rgba(148, 166, 190, 0.4);
-  color: #94A6BE;
-  padding: 11px 14px 10px;
-  margin-right: 7px;
-  margin-bottom: 7px;
+    border-radius: 24px;
+    border: 0.7px solid rgba(148, 166, 190, 0.4);
+    color: ${({$isActiv}) => $isActiv ? '#fff' : '#94A6BE'};
+    background: ${({$isActiv}) => $isActiv ? '#94A6BE' : ''};
+    padding: 11px 14px 10px;
+    margin-right: 7px;
+    margin-bottom: 7px;
+    cursor: pointer;
+`
 
-  p {
+export const StatusThemeP = styled.label`
   font-size: 14px;
   line-height: 1;
   letter-spacing: -0.14px;
-  }
+  cursor: pointer;
+  
+`
 
-${Hover04}
+export const PopBrowseRadioInput = styled.input`
+display: none;
+cursor: pointer;
 `
 
 export const PopBrowseWrap = styled.div`

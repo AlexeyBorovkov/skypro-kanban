@@ -1,7 +1,7 @@
-
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Hover01} from "../../../global.styled";
+
 
 export const PopNewCardDiv = styled.div`
   width: 100%;
@@ -245,7 +245,7 @@ export const CategoriesThemeColor = styled.label`
 display: inline-block;
 width: auto;
 height: 30px;
-padding: 6px 20px;
+padding: 8px 20px;
 border-radius: 24px;
 margin-right: 7px;
 cursor: pointer;
@@ -259,7 +259,6 @@ border-radius: 24px;
 margin-right: 7px;
 background-color: #FFE4C2;
 color: #FF6D00;
-
 `
 
 export const CategoriesThemeGreen = styled(CategoriesThemeColor)`
@@ -283,3 +282,4 @@ margin-right: 7px;
 background-color: #E9D4FF;
 color: #9A48F1;
 `
+

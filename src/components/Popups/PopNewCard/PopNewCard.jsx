@@ -5,9 +5,10 @@ import { paths } from "../../../routesPaths"
 import { UserContext } from "../../../context/userContext"
 import { CardsContext } from "../../../context/cardsContext"
 import { ErrorPopNewCard } from "../../../pages/RegisterPage/registerPage.styled"
-import { CalendarTtl, CategoriesP, CategoriesThemeGreen, CategoriesThemeOrange, CategoriesThemePurple, CategoriesThemes, FormNewArea, FormNewBlock, FormNewCreate, FormNewInput, PopNewCardBlock, PopNewCardCalendar, PopNewCardCategoriesCategories, PopNewCardClose, PopNewCardContainer, PopNewCardContent, PopNewCardDiv, PopNewCardForm, PopNewCardTtl, PopNewCardWrap, RadioInput, SubttlLabel, WrapperRadio } from "./popNewCard.styled"
-import { ru } from "date-fns/locale"
+import * as S from "./popNewCard.styled"
 import { Calendar } from "../../Calendar/Calendar.jsx"
+import { TitleDayPicker, SpanDayPicker } from "../../Calendar/calendar.styled.js"
+
 
 export const PopNewCard= () => {
     const {user} = useContext(UserContext)
@@ -20,8 +21,7 @@ export const PopNewCard= () => {
     const [inputValue, setInputValue] = useState({
         title: '',
         status: 'Без статуса',
-        description: '',
-
+        description: ''
     })
 
     const onChangeInput = (e) => {
@@ -29,79 +29,83 @@ export const PopNewCard= () => {
         setInputValue({...inputValue, [name]: value})
     }
 
-	const onAddNewCard = () => {
-        setError('')
-
-        if(!inputValue.description || !inputValue.title || !topic || !date) {
-            return setError('Все поля должны быть заполнены')
+    const onAddNewCard = async () => {
+        setError('');
+    
+        if (!inputValue.description) {
+          return setError('Введите описание задачи');
         }
-
-        const title = inputValue.title.trim() ? inputValue.title : 'Новая задача';
+        if (!inputValue.title) {
+          return setError('Введите название задачи');
+        }
+        if (!topic) {
+          return setError('Выберете категорию');
+        }
+    
+        const title = inputValue.title || 'Новая задача'
      
 		const newTask = {
-			...inputValue, topic, title, date: date.toISOString
+			...inputValue, topic, title, date: date.toISOString()
 		}
 
-		addNewCard({token: user.token, newTask: newTask})
-		.then((response) => {
-			setCards(response.tasks)
-            navigate(paths.MAIN)
-		}).catch((error) => {
-            setError(error.message)
-		})
+        try {
+            const response = await addNewCard({ token: user.token, newTask });
+            setCards(response.tasks);
+            navigate(paths.MAIN);
+          } catch (error) {
+            setError(error.message || 'Произошла ошибка при создании задачи');
+          }
 	}
 
-    const getDateFormat = (date) => {
-        const formatDate = date.toLocaleDateString('ru-RU')
-        return <p style={{ marginTop: '10px'}}>Срок исполнения:<br/>{formatDate}</p>
+    Date.prototype.toString = function () {
+        const formatDate = this.toLocaleDateString('ru-RU')
+        return <TitleDayPicker>Срок исполнения:<br/><SpanDayPicker>{formatDate}</SpanDayPicker></TitleDayPicker>
     }
 
     return (
-        <PopNewCardDiv id="popNewCard">
-            <PopNewCardContainer>
-                <PopNewCardBlock>
-                    <PopNewCardContent>
-                        <PopNewCardTtl>Создание задачи</PopNewCardTtl>
-                        <PopNewCardClose to={paths.MAIN}>&#10006;</PopNewCardClose>
-                        <PopNewCardWrap>
-                            <PopNewCardForm className="form-new" id="formNewCard" action="#">
-                                <FormNewBlock>
-                                    <SubttlLabel htmlFor="formTitle">Название задачи</SubttlLabel>
-                                    <FormNewInput onChange={onChangeInput} className="form-new__input" type="text" name="title" id="formTitle" placeholder="Введите название задачи..." autoFocus/>
-                                </FormNewBlock>
-                                <FormNewBlock>
-                                    <SubttlLabel htmlFor="textArea">Описание задачи</SubttlLabel>
-                                    <FormNewArea onChange={onChangeInput} name="description" id="textArea"  placeholder="Введите описание задачи..."></FormNewArea>
-                                </FormNewBlock>
-                            </PopNewCardForm>
-                            <PopNewCardCalendar>
-                                <CalendarTtl>Даты</CalendarTtl>
-                                <Calendar locale={ru} mode="single" selected={date} onSelect={setDate} footer={getDateFormat(date)}/>
-                            </PopNewCardCalendar>
-                        </PopNewCardWrap>
-                        <PopNewCardCategoriesCategories>
-                            <CategoriesP>Категория</CategoriesP>
-                            <CategoriesThemes>
-                                <WrapperRadio $isActive={topic === 'Web Design'}>
-                                    <CategoriesThemeOrange htmlFor="radio1">Web Design</CategoriesThemeOrange>
-                                    <RadioInput onChange={(e) => setTopic(e.target.value)} id="radio1" type="radio" name="keks" value={'Web Design'}/> 
-                                </WrapperRadio>
-                                <WrapperRadio $isActive={topic === 'Research'}>
-                                    <CategoriesThemeGreen htmlFor="radio2">Research</CategoriesThemeGreen>
-                                    <RadioInput onChange={(e) => setTopic(e.target.value)} className="_green" id="radio2" type="radio" name="keks" value={'Research'}/>
-                                </WrapperRadio>
-                                <WrapperRadio $isActive={topic === 'Copywriting'}>
-                                    <CategoriesThemePurple htmlFor="radio3">Copywriting</CategoriesThemePurple>
-                                    <RadioInput onChange={(e) => setTopic(e.target.value)} className="_purple" id="radio3" type="radio" name="keks" value={'Copywriting'}/>
-                                </WrapperRadio>
-                            </CategoriesThemes>
-                        </PopNewCardCategoriesCategories>
+        <S.PopNewCardDiv id="popNewCard">
+            <S.PopNewCardContainer>
+                <S.PopNewCardBlock>
+                    <S.PopNewCardContent>
+                        <S.PopNewCardTtl>Создание задачи</S.PopNewCardTtl>
+                        <S.PopNewCardClose to={paths.MAIN}>&#10006;</S.PopNewCardClose>
+                        <S.PopNewCardWrap>
+                            <S.PopNewCardForm className="form-new" id="formNewCard" action="#">
+                                <S.FormNewBlock>
+                                    <S.SubttlLabel htmlFor="formTitle">Название задачи</S.SubttlLabel>
+                                    <S.FormNewInput onChange={onChangeInput} className="form-new__input" type="text" name="title" id="formTitle" placeholder="Введите название задачи..." autoFocus/>
+                                </S.FormNewBlock>
+                                <S.FormNewBlock>
+                                    <S.SubttlLabel htmlFor="textArea">Описание задачи</S.SubttlLabel>
+                                    <S.FormNewArea onChange={onChangeInput} name="description" id="textArea"  placeholder="Введите описание задачи..."></S.FormNewArea>
+                                </S.FormNewBlock>
+                            </S.PopNewCardForm>
+                            <S.PopNewCardCalendar>
+                                <Calendar mode="single" selected={date} required onSelect={(date) => setDate(new Date(date))} footer={date.toString()}/>
+                            </S.PopNewCardCalendar>
+                        </S.PopNewCardWrap>
+                        <S.PopNewCardCategoriesCategories>
+                            <S.CategoriesP>Категория</S.CategoriesP>
+                            <S.CategoriesThemes>
+                                <S.WrapperRadio $isActive={topic === 'Web Design'}>
+                                    <S.CategoriesThemeOrange htmlFor="radio1">Web Design</S.CategoriesThemeOrange>
+                                    <S.RadioInput onChange={(e) => setTopic(e.target.value)} id="radio1" type="radio" name="keks" value={'Web Design'}/> 
+                                </S.WrapperRadio>
+                                <S.WrapperRadio $isActive={topic === 'Research'}>
+                                    <S.CategoriesThemeGreen htmlFor="radio2">Research</S.CategoriesThemeGreen>
+                                    <S.RadioInput onChange={(e) => setTopic(e.target.value)}  id="radio2" type="radio" name="keks" value={'Research'}/>
+                                </S.WrapperRadio>
+                                <S.WrapperRadio $isActive={topic === 'Copywriting'}>
+                                    <S.CategoriesThemePurple htmlFor="radio3">Copywriting</S.CategoriesThemePurple>
+                                    <S.RadioInput onChange={(e) => setTopic(e.target.value)}  id="radio3" type="radio" name="keks" value={'Copywriting'}/>
+                                </S.WrapperRadio>
+                            </S.CategoriesThemes>
+                        </S.PopNewCardCategoriesCategories>
                         <ErrorPopNewCard>{error && error}</ErrorPopNewCard>
-                        
-                        <FormNewCreate onClick={onAddNewCard} id="btnCreate">Создать задачу</FormNewCreate>
-                    </PopNewCardContent>
-                </PopNewCardBlock>
-            </PopNewCardContainer>
-        </PopNewCardDiv>
+                        <S.FormNewCreate onClick={onAddNewCard} id="btnCreate">Создать задачу</S.FormNewCreate>
+                    </S.PopNewCardContent>
+                </S.PopNewCardBlock>
+            </S.PopNewCardContainer>
+        </S.PopNewCardDiv>
     )
 }

@@ -71,6 +71,7 @@ export const Container = styled.div`
 `
 
 
+
 export const Hover01 = css`
 &:hover {
   background-color: #33399b;
@@ -123,14 +124,14 @@ export const BtnBg = css`
   outline: none;
   color: #FFFFFF;
 `
-export const colors = {
-  'Web Design': 'orange',
-  'Research': 'green',
-  'Copywriting': 'purple', 
-}
 export const Subttl = css`
   color: #000;
   font-size: 14px;
   font-weight: 600;
   line-height: 1;
 `;
+export const colors = {
+  'Web Design': 'orange',
+  'Research': 'green',
+  'Copywriting': 'purple', 
+}
