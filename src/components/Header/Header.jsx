@@ -5,15 +5,16 @@ import { Link } from "react-router-dom";
 import { paths } from "../../routesPaths.js";
 
 
+export const Header = ({globalTheme, setGlobalTheme, user}) => {
+	const [isOpenModal, setIsOpenModal] = useState(false)
 
 
-export const Header = ({addCard, globalTheme, setGlobalTheme, isAuth}) => {
-	const [isOpenedModalUserWindow, setIsOpenedModalUserWindow] = useState(false);
 
-	function handlerOpenModalWindow(event) {
+	function OpenModal(event) {
 		event.preventDefault()
-		setIsOpenedModalUserWindow(prev => !prev)
+		setIsOpenModal(prev => !prev)
 	}
+
 
     return (
         <S.Header>
@@ -26,18 +27,18 @@ export const Header = ({addCard, globalTheme, setGlobalTheme, isAuth}) => {
 						<a href="" target="_self"><img src="/img/logo_dark.png" alt="logo"/></a>
 					</S.HeaderLogoDark>
 					<S.HeaderNav>
-						<S.HeaderBtnMainNew id="btnMainNew"><a href="#popNewCard" onClick={addCard}>Создать новую задачу</a></S.HeaderBtnMainNew>
-						<S.HeaderUser href="#user-set-target" onClick={(event) => handlerOpenModalWindow(event)}>{isAuth.name}</S.HeaderUser>
-							{isOpenedModalUserWindow && (
-								<div className="header__pop-user-set pop-user-set" id="user-set-target">
-									<p className="pop-user-set__name">{isAuth.name}</p>
-									<p className="pop-user-set__mail">{isAuth.login}</p>
-									<div className="pop-user-set__theme">
+						<S.HeaderBtnMainNew id="btnMainNew"><Link to={paths.NEW_CARD}>Создать новую задачу</Link></S.HeaderBtnMainNew>
+						<S.HeaderUser href="#user-set-target" onClick={(event) => OpenModal(event)}>{user.name}</S.HeaderUser>
+							{isOpenModal&& (
+								<S.HeaderPopUserSet id="user-set-target">
+									<S.PopUserSetName>{user.name}</S.PopUserSetName>
+									<S.PopUserSetEmail>{user.login}</S.PopUserSetEmail>
+									<S.PopUserSetTheme>
 										<p>Темная тема</p>
 										<input type="checkbox" className="checkbox" name="checkbox" onChange={()=> setGlobalTheme(!globalTheme)}/>
-									</div>
-									<button type="button" className="_hover03"><Link to={paths.EXIT}>Выйти</Link></button>
-								</div>
+									</S.PopUserSetTheme>
+									<S.HeaderUserButtonExit to={paths.EXIT} type="button">Выйти</S.HeaderUserButtonExit>
+								</S.HeaderPopUserSet>
 							)}
 					</S.HeaderNav>					
 				</S.HeaderBlock>

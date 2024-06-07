@@ -167,3 +167,8 @@ color: red;
 font-size: 14px;
 margin-top: 10px;
 `
+export const ErrorPopNewCard = styled.p`
+color: red;
+font-size: 14px;
+margin-top: 10px;
+`

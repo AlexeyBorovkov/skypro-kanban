@@ -70,17 +70,6 @@ export const Container = styled.div`
   padding: 0 30px;
 `
 
-// export const Hover01 = (element) => styled[element]`
-// &:hover {
-//   background-color: #33399b;
-// }
-// `
-
-// export const Hover02 = (element) => styled[element]`
-// &:hover {
-//   color: #33399b;
-// }
-// `
 
 export const Hover01 = css`
 &:hover {
@@ -99,19 +88,26 @@ export const Hover03 = css`
 }
 `
 
+export const Hover04 = css`
+&:hover {
+  background: #94A6BE;
+  color: #FFFFFF;
+}
+`
+
 const orange = css`
-background-color: #FFE4C2; 
-color: #FF6D00;
+background-color: ${({theme}) => theme.orangeBg}; 
+color: ${({theme}) => theme.orangeText};
 `
 
 const green = css`
-background-color: #B4FDD1;
-color: #06B16E;
+background-color: ${({theme}) => theme.greenBg}; 
+color: ${({theme}) => theme.greenText};
 `
 
 const purple = css`
-background-color: #E9D4FF;
-color: #9A48F1;
+background-color: ${({theme}) => theme.purpleBg}; 
+color: ${({theme}) => theme.purpleText};
 `
 
 export const colorTheme = (color) => css`
@@ -132,3 +128,9 @@ export const colors = {
   'Research': 'green',
   'Copywriting': 'purple', 
 }
+export const Subttl = css`
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+`;
