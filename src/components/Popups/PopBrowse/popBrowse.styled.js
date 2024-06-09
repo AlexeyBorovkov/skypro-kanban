@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BtnBg, Hover01, Hover03} from "../../../global.styled";
 import { Link } from "react-router-dom";
-import { topicColors} from "../../../data";
+import { topicColors } from "../../../global.styled";
 
 export const BtnBrowse = styled.button`
 ${BtnBg}

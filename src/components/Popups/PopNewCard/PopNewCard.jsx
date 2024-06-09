@@ -1,23 +1,31 @@
 import { useContext, useState } from "react"
 import { addNewCard } from "../../../api/cardsApi"
 import { useNavigate } from "react-router-dom"
-import { paths } from "../../../routesPaths"
+import { paths } from "../../../lib/routesPaths"
 import { UserContext } from "../../../context/userContext"
 import { CardsContext } from "../../../context/cardsContext"
 import { ErrorPopNewCard } from "../../../pages/RegisterPage/registerPage.styled"
 import * as S from "./popNewCard.styled"
 import { Calendar } from "../../Calendar/Calendar.jsx"
 import { TitleDayPicker, SpanDayPicker } from "../../Calendar/calendar.styled.js"
+import { DateContext } from "../../../context/dateContext";
 
 
 export const PopNewCard= () => {
     const {user} = useContext(UserContext)
     const {setCards} = useContext(CardsContext)
     const navigate = useNavigate()
-
+    const {dateCalendar, setDateCalendar} = useContext(DateContext);
     const [topic, setTopic] = useState('')
-    const [date, setDate] = useState(new Date())
+    // const [date, setDate] = useState(new Date())
     const [error, setError] = useState('')
+    const [value, setValue] = useState(<TitleDayPicker>Выберите срок исполнения.</TitleDayPicker>);
+
+    const handleDayClick = (dateCalendar) => {
+        const formatDate = dateCalendar.toLocaleDateString("RU-ru");
+        setValue(<TitleDayPicker>Срок исполнения: <SpanDayPicker>{formatDate}</SpanDayPicker></TitleDayPicker>);
+    }
+
     const [inputValue, setInputValue] = useState({
         title: '',
         status: 'Без статуса',
@@ -45,7 +53,7 @@ export const PopNewCard= () => {
         const title = inputValue.title || 'Новая задача'
      
 		const newTask = {
-			...inputValue, topic, title, date: date.toISOString()
+			...inputValue, topic, title, date: dateCalendar
 		}
 
         try {
@@ -57,10 +65,10 @@ export const PopNewCard= () => {
           }
 	}
 
-    Date.prototype.toString = function () {
-        const formatDate = this.toLocaleDateString('ru-RU')
-        return <TitleDayPicker>Срок исполнения:<br/><SpanDayPicker>{formatDate}</SpanDayPicker></TitleDayPicker>
-    }
+    // Date.prototype.toString = function () {
+    //     const formatDate = this.toLocaleDateString('ru-RU')
+    //     return <TitleDayPicker>Срок исполнения:<br/><SpanDayPicker>{formatDate}</SpanDayPicker></TitleDayPicker>
+    // }
 
     return (
         <S.PopNewCardDiv id="popNewCard">
@@ -81,7 +89,7 @@ export const PopNewCard= () => {
                                 </S.FormNewBlock>
                             </S.PopNewCardForm>
                             <S.PopNewCardCalendar>
-                                <Calendar mode="single" selected={date} required onSelect={(date) => setDate(new Date(date))} footer={date.toString()}/>
+                                <Calendar dateCalendar={dateCalendar} setDateCalendar={setDateCalendar} handleDayClick={handleDayClick} value={value}/>
                             </S.PopNewCardCalendar>
                         </S.PopNewCardWrap>
                         <S.PopNewCardCategoriesCategories>

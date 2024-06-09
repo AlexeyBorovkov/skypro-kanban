@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
+
 import { GlobalStyle} from './global.styled.js'
 import { ThemeProvider } from 'styled-components'
-import { darkTheme, lightTheme } from './themeStyle.js'
+import { darkTheme, lightTheme } from './lib/themeStyle.js'
 import {AppRoutes} from "./AppRoutes.jsx";
 
 

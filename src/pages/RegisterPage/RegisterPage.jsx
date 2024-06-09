@@ -1,7 +1,7 @@
 import * as S from "./registerPage.styled.js";
 import {Wrapper} from "../../global.styled.js";
 import { Link, useNavigate } from "react-router-dom";
-import { paths } from "../../routesPaths.js";
+import { paths } from "../../lib/routesPaths.js";
 import { register } from "../../api/auth.js";
 import { useState } from "react";
 
@@ -25,8 +25,11 @@ export const RegisterPage = () => {
     const registerHandler = (e) => {
         e.preventDefault()
         const {login, name, password} = inputValue;
-        if(!login || !name || !password) {
+        if(!login.trim() || !name.trim() || !password.trim()) {
            return setErrorMsg('Заполните все поля')
+        }
+        if(password.length < 3) {
+            return setErrorMsg('Пароль должен содержать минимум 3 символа')
         }
         register(inputValue).then(() => {
             setErrorMsg('')

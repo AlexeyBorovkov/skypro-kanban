@@ -29,7 +29,7 @@ export const PopExitContainer = styled.div`
 export const PopExitBlock = styled.div`
   display: block;
   margin: 0 auto;
-  background-color: #FFFFFF;
+  background-color: ${({theme}) => theme. PopExitBlockColor};
   max-width: 370px;
   width: 100%;
   padding: 50px 60px;
@@ -60,6 +60,7 @@ export const PopExitTtlH2 = styled.h2`
   line-height: 30px;
   letter-spacing: -0.4px;
   margin-bottom: 20px;
+  color: ${({theme}) => theme.PopExitTtlH2};
 `
 
 export const PopExitFormGroup = styled.div`

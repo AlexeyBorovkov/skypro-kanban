@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Container } from "../../global.styled.js";
 import * as S from './header.styled.js'
 import { Link } from "react-router-dom";
-import { paths } from "../../routesPaths.js";
+import { paths } from "../../lib/routesPaths.js";
 
 
 export const Header = ({globalTheme, setGlobalTheme, user}) => {

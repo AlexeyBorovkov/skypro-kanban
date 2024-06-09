@@ -1,4 +1,4 @@
-import { paths } from "../../../routesPaths.js"
+import { paths } from "../../../lib/routesPaths.js"
 import * as S from "./popBrowse.styled.js"
 import { useNavigate, useParams } from "react-router-dom"
 import { CardsContext } from "../../../context/cardsContext.jsx"
@@ -8,14 +8,16 @@ import { UserContext } from "../../../context/userContext.jsx"
 import { LoaderItem } from "../../../components/loader/LoaderItem.jsx"
 import { Calendar } from "../../Calendar/Calendar.jsx"
 import { TitleDayPicker, SpanDayPicker } from "../../Calendar/calendar.styled.js"
+import { DateContext } from "../../../context/dateContext";
 import { colors } from "../../../global.styled.js"
 
 
 export const PopBrowse = () => {
 
     const {cards, setCards} = useContext(CardsContext)
+    const {dateCalendar, setDateCalendar} = useContext(DateContext);
     const {user} = useContext(UserContext)
-    const [date, setDate] = useState(new Date())
+    // const [date, setDate] = useState(new Date())
   
     const navigation = useNavigate()
     const [error, setError] = useState('')
@@ -47,7 +49,7 @@ export const PopBrowse = () => {
     })
 
     useEffect(() => {
-        if(tasksCard) {
+        if(tasksCard && tasksCard.date) {
             setEdtitInputTask({
                 title: tasksCard.title,
                 topic: tasksCard.topic,
@@ -67,7 +69,7 @@ export const PopBrowse = () => {
         const editTask = {
             title: tasksCard.title,
             topic: tasksCard.topic,
-            date: date,
+            date: dateCalendar,
             description: editInputTask.description,
             status: editInputTask.status,
         }
@@ -81,21 +83,24 @@ export const PopBrowse = () => {
             setError(error.message);
         })
     }
+    const currentDate = tasksCard ? new Date(tasksCard.date).toLocaleDateString() : 'Дата не задана';
 
-    const cancellationEdit = () => {
-        setEdtitInputTask(tasksCard);
-    }
+    const [value, setValue] = useState(<TitleDayPicker>Срок исполнения: <SpanDayPicker>{currentDate}</SpanDayPicker></TitleDayPicker>);
 
-    const getDateFormat = (date) => {
-        if(isActive) {
-            const formatDate = date.toLocaleDateString('ru-RU')
-            return <TitleDayPicker>Срок исполнения:<br/><SpanDayPicker>{formatDate}</SpanDayPicker></TitleDayPicker>
-        } else {
-            const formatDate = date.toLocaleDateString('ru-RU')
-            return <TitleDayPicker>Срок исполнения:<br/><SpanDayPicker>{formatDate}</SpanDayPicker></TitleDayPicker>
+    const handleDayClick = (dateCalendar) => {
+        if (isActive) {
+            const formatDate = dateCalendar.toLocaleDateString("RU-ru");
+            return setValue(<TitleDayPicker>Срок исполнения: <SpanDayPicker>{formatDate}</SpanDayPicker></TitleDayPicker>);
         }
     }
 
+    const cancellationEdit = () => {
+        setEdtitInputTask(tasksCard);
+        setValue(<TitleDayPicker>Срок исполнения: <SpanDayPicker>{currentDate}</SpanDayPicker></TitleDayPicker>);
+    }
+
+
+   
     return (
         <S.PopBrowseDiv id="popBrowse">
             <S.PopBrowseContainer>
@@ -148,8 +153,8 @@ export const PopBrowse = () => {
                                     </S.FormBrowseBlock>
                                 </S.PopBrowseForm>
                                 {isActive ? 
-                                <Calendar mode="single" required selected={date} onSelect={setDate} footer={getDateFormat(date)}/> :
-                                <Calendar selected={date}  footer={getDateFormat(date)}/>}
+                                <Calendar dateCalendar={dateCalendar} setDateCalendar={setDateCalendar} handleDayClick={handleDayClick} value={value}/> :
+                                <Calendar handleDayClick={handleDayClick}  value={value}/>}
                             </S.PopBrowseWrap>
                             <S.ThemeDownCategories>
                                 <S.CategoriesPsubttl>Категория</S.CategoriesPsubttl>
