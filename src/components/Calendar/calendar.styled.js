@@ -3,7 +3,7 @@ import { Subttl } from "../../global.styled";
 import { DayPicker } from "react-day-picker";
 
 export const TitleDayPicker = styled.p`
-    padding-top: 7px;
+    margin-top: 10px;
 `;
 
 export const SpanDayPicker = styled.span`

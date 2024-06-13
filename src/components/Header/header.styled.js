@@ -182,7 +182,7 @@ input:checked[type=checkbox]::before {
   left: 12px;
 }
 `
-// не работает
+
 export const HeaderUserButtonExit = styled(Link)`
 
   width: 80px;

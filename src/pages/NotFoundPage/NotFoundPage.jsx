@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Wrapper } from "../../global.styled"
-import { paths } from "../../routesPaths"
+import { paths } from "../../lib/routesPaths"
 
 export const NotFoundPage = () => {
     return (

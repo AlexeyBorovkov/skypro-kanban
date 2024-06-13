@@ -10,7 +10,7 @@ import {
     ModalTtl
 } from "../RegisterPage/registerPage.styled.js";
 import { Link } from "react-router-dom";
-import { paths } from "../../routesPaths.js";
+import { paths } from "../../lib/routesPaths.js";
 import { signIn } from "../../api/auth.js";
 import { useContext, useState } from "react";
 import { UserContext } from "../../context/userContext.jsx";
